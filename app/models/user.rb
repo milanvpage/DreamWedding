@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_many :weddings
-    has_many :categories, through: :weddings
+    has_many :venues, through: :weddings
 
     has_many :comments
     has_many :commented_weddings, through: :comments, source: :wedding

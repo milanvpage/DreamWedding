@@ -4,7 +4,7 @@ class CreateWeddings < ActiveRecord::Migration[6.1]
       t.string :title
 
       t.belongs_to :user, foreign_key: true
-      t.belongs_to :category, foreign_key: true
+      t.belongs_to :venue, foreign_key: true
 
       t.timestamps
     end

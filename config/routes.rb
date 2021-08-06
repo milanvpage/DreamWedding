@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #put custom routes at thetop of the routes because dynamic routes like :id with over power them.
 #localhost:3000/rails/info/routes
 
 
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :categories
+  resources :venues
   resources :comments
   resources :users
   # get '/weddings', to: 'weddings#index' controller name and then the action it's going to inside our controller
