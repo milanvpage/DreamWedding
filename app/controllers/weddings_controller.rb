@@ -49,7 +49,7 @@ class WeddingsController < ApplicationController
     private
 
     def wedding_params
-        params.require(:wedding).permit(:content)
+        params.require(:wedding).permit(:title, :content)
     end
 
 end
