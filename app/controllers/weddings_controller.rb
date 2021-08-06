@@ -1,5 +1,4 @@
 class WeddingsController < ApplicationController
-
     def new
         @wedding = Wedding.new
     end
