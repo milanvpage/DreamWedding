@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Wedding.create([ 
-    {title:"Fall Glow", entertainment:"Jack Johnson"},
-    {title:"Wedding in the Sun", entertainment: "Hootie and the Blow Fish", },
-    {title:"Snowflake Wedding", entertainment:""}
+    {title:"Fall Glow", entertainment:"Jack Johnson" color_scheme:"faded Green and burnt Orange"},
+    {title:"Wedding in the Sun", entertainment: "Hootie and the Blow Fish", color_scheme: "Lavender" },
+    {title:"Snowflake Wedding", entertainment:"Harry Connick Jr." color_scheme:"Red, White and Silver"}
     ])
 
 Venue.create([ 
