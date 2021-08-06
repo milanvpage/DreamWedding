@@ -7,7 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Wedding.create([ 
-    {title:"Lavender Love", content:"Test"},
+    {food_and_beverage:"", content:"Test"},
     {title:"Wedding in the Sun", content:"Test"},
     {title:"Snowflake Wedding", content:"Test"}
+    ])
+    destination"
+    t.string "food_and_beverage"
+    t.string "entertainment"
+    t.string "venue"
+
+Category.create([ 
+    {name:"Winter Wedding", season:"Winter"},
+    {name:"Spring Wedding",season:"Spring"},
+    {name:"Summer Wedding",season:"Summer"},
+    {name:"Fall Wedding",season:"Fall"}
     ])

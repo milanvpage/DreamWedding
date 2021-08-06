@@ -40,13 +40,11 @@ ActiveRecord::Schema.define(version: 2021_08_06_034347) do
 
   create_table "weddings", force: :cascade do |t|
     t.string "title"
-    t.text "content"
     t.integer "user_id"
     t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "destination"
-    t.string "food_and_beverage"
     t.string "entertainment"
     t.string "venue"
     t.index ["category_id"], name: "index_weddings_on_category_id"
