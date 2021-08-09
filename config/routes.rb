@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
 
 
+  get '/venues/most_expensive', to: 'venues#most_expensive'
+  get '/venues/least_expensive', to: 'venues#least_expensive'
 
   resources :venues
   resources :comments

@@ -1,4 +1,4 @@
 <h1> Venues </h1>
 <% @venues.each do |venue| %>
-    <h2><%= link_to "#{venue.name} - $#{venue.price}", venue_path(venue) %></h2>
+    <h2><%= link_to venue.name_and_address, venue_path(venue) %> - $<%= venue.price %></h2>
   <% end %>

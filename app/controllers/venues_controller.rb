@@ -45,6 +45,16 @@ class VenuesController < ApplicationController
         redirect_to venues_path
     end
 
+    def most_expensive
+        @venues = Venue.most_expensive.order_by_price
+        render :index
+    end
+
+    def least_expensive
+        @venues = Venue.least_expensive.order_by_price
+        render :index
+    end
+
     private
 
     def venue_params
