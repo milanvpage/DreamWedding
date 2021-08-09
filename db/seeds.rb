@@ -6,13 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#Wedding.create([ 
-    #{title:"Wedding in the Rain", entertainment:"Jack Johnson", color_scheme:"faded Green and burnt Orange"},
-    #{title:"Wedding in the Sun", entertainment: "Jason Mraz", color_scheme: "Lavender" },
-    #{c}
-    #])
+w = Wedding.find_or_create_by(title: "Summer Wedding", entertainment: "Jack Johnson", color_scheme: "lavender")
 
-#Venue.find_or_create_by(name:"Summer Heights", location: "5678 Ocean drive Sacremento, California")
+v = Venue.find_or_create_by(name:"Summer Heights", address: "5678 Ocean drive Sacremento, California", price: 16000)
 
-w = Wedding.create(title:"Wedding in the Rain", entertainment:"Jack Johnson", color_scheme:"faded Green and burnt Orange")
-w2 = Wedding.create(title:"Wedding in the Sun", entertainment: "Jason Mraz", color_scheme: "Lavender")
