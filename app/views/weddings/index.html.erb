@@ -1,5 +1,5 @@
 <h1>Weddings<h1>
 
 <% @weddings.each do |wedding| %>
-    <h2><%= link_to "#{wedding.title} - #{wedding.entertainment}", wedding_path(wedding) %></h2>
+    <h2><%= link_to wedding.name_and_color_scheme - "#{wedding.entertainment}", wedding_path(wedding) %></h2>
 <% end %>

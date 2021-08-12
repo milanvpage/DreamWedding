@@ -1,7 +1,10 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-edit weddings
+<h1>Edit Wedding</h1>
+<%= form_for(@wedding) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :color_scheme %>
+    <%= f.text_field :color_scheme %>
+    <%= f.label :entertainment %>
+    <%= f.text_field :entertainment %>
+    <%= submit_tag "Update Wedding" %>
+<% end %>

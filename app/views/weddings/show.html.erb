@@ -1,7 +1,5 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-show individual weddings
+<h1>Weddings</h1>
+
+<h2><%= @wedding.name_and_color_scheme %> - <%= @wedding.entertainment %> </h2>
+
+<%= link_to "Delete", wedding_path(@wedding), method: 'delete' %>
