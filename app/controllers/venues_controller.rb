@@ -46,7 +46,7 @@ class VenuesController < ApplicationController
     end
 
     def most_expensive
-        @venues = Venue.most_expensive.order_by_price
+        @venues = Venue.order_by_price
         render :index
     end
 

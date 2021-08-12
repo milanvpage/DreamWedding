@@ -1,3 +1,5 @@
 <h1>SHOW PAGE </h1>
 
-<h2><%= @venue.name_and_address %> - $<%= @venue.price %> </h2>
+<h2><%= @venue.name_and_address %> - <%= number_to_currency(@venue.price) %> </h2>
+
+<%= link_to "Delete", venue_path(@venue), method: 'delete' %>
