@@ -1,5 +1,4 @@
 class Wedding < ApplicationRecord
-  belongs_to :user
   belongs_to :venue
   has_many :comments
   has_many :users, through: :comments
@@ -8,5 +7,5 @@ class Wedding < ApplicationRecord
     "#{self.name} - #{self.color_scheme}"
   end
 
-  
+
 end

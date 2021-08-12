@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_08_09_161519) do
 
   create_table "comments", force: :cascade do |t|
+    t.string "title"
     t.string "content"
     t.integer "user_id"
     t.integer "wedding_id"
@@ -27,6 +28,8 @@ ActiveRecord::Schema.define(version: 2021_08_09_161519) do
     t.string "email"
     t.string "phone_number"
     t.string "password_digest"
+    t.string "uid"
+    t.string "provider"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -41,18 +44,15 @@ ActiveRecord::Schema.define(version: 2021_08_09_161519) do
 
   create_table "weddings", force: :cascade do |t|
     t.string "title"
-    t.integer "user_id"
     t.integer "venue_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "entertainment"
     t.string "color_scheme"
-    t.index ["user_id"], name: "index_weddings_on_user_id"
     t.index ["venue_id"], name: "index_weddings_on_venue_id"
   end
 
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "weddings"
-  add_foreign_key "weddings", "users"
   add_foreign_key "weddings", "venues"
 end
