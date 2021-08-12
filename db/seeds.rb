@@ -13,5 +13,5 @@ v2 = Venue.find_or_create_by(name:"Forest Valley Venue", address: "5678 OakTree 
 
 v3 = Venue.find_or_create_by(name:"Hill Top Resort", address: "5678 Rose Street Portland, Oregon", price: 18000)
 
-w1 = Wedding.find_or_create_by(title: "Summer Wedding", entertainment: "Jack Johnson", color_scheme: "lavender", venue: v1)
+w1 = Wedding.find_or_create_by(title: "Summer Wedding", entertainment: "Jack Johnson", color_scheme: "lavender", flowers: "White Roses", venue: v1)
 

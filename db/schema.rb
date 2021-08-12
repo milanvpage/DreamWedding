@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_161519) do
+ActiveRecord::Schema.define(version: 2021_08_12_192804) do
 
   create_table "comments", force: :cascade do |t|
     t.string "title"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_08_09_161519) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "entertainment"
     t.string "color_scheme"
+    t.string "flowers"
     t.index ["venue_id"], name: "index_weddings_on_venue_id"
   end
 

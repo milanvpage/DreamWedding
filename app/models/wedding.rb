@@ -3,8 +3,12 @@ class Wedding < ApplicationRecord
   has_many :comments
   has_many :users, through: :comments
 
-  def name_and_color_scheme
-    "#{self.name} - #{self.color_scheme}"
+  def title_and_color_scheme
+    "#{self.title} - #{self.color_scheme}"
+  end
+
+  def entertainment_and_flowers
+    "#{self.entertainment} - #{self.flowers}"
   end
 
 

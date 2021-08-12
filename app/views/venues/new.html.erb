@@ -40,9 +40,15 @@
 <%= form_with(url: venues_path) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
+    <br>
+    <br>
     <%= f.label :address %>
     <%= f.text_field :address %>
+    <br>
+    <br>
     <%= f.label :price %>
     <%= f.number_field :price, step:"0.01" %>
+    <br>
+    <br>
     <%= submit_tag "Create Venue" %>
 <% end %>

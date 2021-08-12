@@ -8,7 +8,9 @@ get '/venues/least_expensive', to: 'venues#least_expensive'
 
   #put custom routes at the top
   get '/signup' => 'users#new'
-  get '/login' => 'users#login'
+  post '/signup' => 'users#create'
+  get '/login' => 'sessions#new'
+  post 'login' => 'sessions#create'
 
   resources :venues
   resources :comments
@@ -16,6 +18,8 @@ get '/venues/least_expensive', to: 'venues#least_expensive'
   # get '/weddings', to: 'weddings#index' controller name and then the action it's going to inside our controller
   # get '/weddings/:id', to: 'weddings#show' as: 'wedding'
   # get '/weddings/most_expensive', to: 'weddings#most_expensive'
-  resources :weddings
+  resources :weddings do
+    
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
