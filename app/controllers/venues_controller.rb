@@ -31,7 +31,7 @@ class VenuesController < ApplicationController
 
     def update
         @venue = Venue.find_by_id(params[:id])
-        @venue.update[venue_params]
+        @venue.update(venue_params)
         if @venue.valid?
             redirect_to venue_path(@venue)
         else
@@ -59,7 +59,7 @@ class VenuesController < ApplicationController
 
     def venue_params
 
-        params.require[:venue].permit[:name, :location]
+        params.require(:venue).permit(:name, :address, :price)
     end
 
 

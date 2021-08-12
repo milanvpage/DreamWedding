@@ -1,4 +1,5 @@
 class Venue < ApplicationRecord
+  validates :price, presence: true
   has_many :weddings
   has_many :users, through: :weddings
 

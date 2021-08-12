@@ -1,0 +1,10 @@
+<h1>Edit Venue</h1>
+<%= form_for(@venue) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    <%= f.label :price %>
+    <%= f.number_field :price, step:"0.01" %>
+    <%= submit_tag "Update Venue" %>
+<% end %>

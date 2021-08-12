@@ -17,7 +17,10 @@ class UsersController < ApplicationController
     end
 
     def show
+        @user = find_by_id(params[:id])
     end
+
+    
 
     private
 

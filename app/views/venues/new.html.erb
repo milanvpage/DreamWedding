@@ -1,0 +1,48 @@
+<h1>Create Venue</h1>
+
+<form method="POST" action="/venues">
+<input type="hidden" name=authenticity_token value="<%= form_authenticity_token %>">
+<label for="venue_name">Name: </label>
+<input type="text" name="venue[name]" id="venue_name">
+<label for="venue_address">Address: </label>
+<input type="text" name="venue[address]" id="venue_address">
+<label for="venue_price">Price: </label>
+<input type="number" name="venue[price]" id="venue_price" step="0.01">
+
+<input type= "submit" value= "Create Venue">
+</form>
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+<%= form_tag(venues_path) do %>
+<%= label_tag :"venue_name" %>
+<%= text_field_tag :"venue[name]"%>
+<%= label_tag :"venue_address" %>
+<%= text_field_tag :"venue[address]"%>
+<%= label_tag :"venue_price" %>
+<%= number_field_tag :"venue[price]", step:"0.01"%>
+<%= submit_tag "Create Venue"%>
+<% end %>
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+<%= form_for(@venue) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    <%= f.label :price %>
+    <%= f.number_field :price, step:"0.01" %>
+    <%= submit_tag "Create Venue" %>
+<% end %>
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+<%= form_with(url: venues_path) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    <%= f.label :price %>
+    <%= f.number_field :price, step:"0.01" %>
+    <%= submit_tag "Create Venue" %>
+<% end %>

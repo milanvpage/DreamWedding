@@ -1,7 +1,13 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-create weddings
+<h1>Create Wedding</h1>
+
+<form method="POST" action="/weddings">
+<input type="hidden" name=authenticity_token value="<%= form_authenticity_token %>">
+
+<label for="wedding_title">Title: </label>
+<input type="text" name="wedding[title]" id="wedding_title">
+<label for="wedding_color_scheme">Color Scheme: </label>
+<input type="text" name="wedding[color_scheme]" id="wedding_color_scheme">
+<label for="wedding_entertainment">Entertainment: </label>
+<input type="text" name="wedding[entertainment]" id="wedding_entertainment">
+<input type="submit" value= "Create Wedding">
+</form>
