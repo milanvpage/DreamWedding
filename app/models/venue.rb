@@ -1,5 +1,9 @@
 class Venue < ApplicationRecord
-  validates :price, presence: true
+  validates :name, presence: true, length: {minimum: 2, message: "has to be longer than 2!"}
+  validates :address, presence: true, uniqueness: {scope: [:name, :price]}
+  validates :price, numericality: {greater_than: 0, less_than: 1000000001}, presence: true
+  
+
   has_many :weddings
   has_many :users, through: :weddings
 

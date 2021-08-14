@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    #validates :business_name, presence: true, uniqueness: {scope: [:phone_number, :email]}
+    validates :email, uniqueness: true
+
     has_many :weddings
     has_many :venues, through: :weddings
 

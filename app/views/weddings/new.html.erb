@@ -1,7 +1,17 @@
 <h1>Create Wedding</h1>
+<% if @wedding.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@wedding.errors.count, "error") %> prohibited this wedding from being saved:</h2>
 
+    <ul>
+      <% @wedding.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <h2>
-<%= form_with(url: weddings_path) do |f| %>
+<%= form_for(@wedding) do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
     <br>
@@ -11,9 +21,18 @@
     <br>
     <br>
     <%= f.label :entertainment %>
-    <%= f.number_field :entertainment %>
+    <%= f.text_field :entertainment %>
     <br>
     <br>
-    <%= submit_tag "Create Wedding" %>
+    <%= f.label :flowers %>
+    <%= f.text_field :flowers %>
+    <br>
+    <br>
+    <%= f.label :venue %>
+    <%= f.text_field :venue %>
+    <br>
+    <br>
+    
+    <%= f.submit "Create Wedding" %>
 <% end %>
 </h2>

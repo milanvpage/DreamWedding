@@ -1,6 +1,11 @@
 <h1>Weddings<h1>
 
 <% @weddings.each do |wedding| %>
-    <h2><%= link_to wedding.title_and_color_scheme, wedding_path(wedding)%> <%= link_to wedding.entertainment_and_flowers, wedding_path(wedding)%></h2>
+    <ul>
+    <li>
+    <%= link_to wedding.title_and_color_scheme, wedding_path(wedding)%> 
+    <%= link_to wedding.entertainment_and_flowers, wedding_path(wedding)%>
+    </ul>
+    </li>
 <% end %>
 
