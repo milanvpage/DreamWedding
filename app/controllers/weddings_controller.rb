@@ -1,4 +1,5 @@
 class WeddingsController < ApplicationController
+    layout "wedding"
     def new
         @wedding = Wedding.new
         @wedding.build_venue
