@@ -1,6 +1,7 @@
 class WeddingsController < ApplicationController
     def new
         @wedding = Wedding.new
+        @wedding.build_venue
     end
     
     def create
