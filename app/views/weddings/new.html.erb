@@ -28,6 +28,8 @@
     <%= f.text_field :flowers %>
     <br>
     <br>
+    <h3>Select an already existing Venue:</h3>
+    <%= f.collection_select :venue_id, Venue.all, :id, :name %>
     <h3>Make a Venue:</h3>
     <%= f.fields_for :venue do |v| %>
         <%= v.label :name %>

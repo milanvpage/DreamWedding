@@ -1,10 +1,11 @@
 <h1>Weddings</h1>
 
-<h2>Title and Color Scheme:</h2> <%= @wedding.title_and_color_scheme %>
+<h2>Title and Entertainment:</h2> <%= @wedding.title_and_entertainment %>
 <br>
-<h2>Entertainment and Flowers:</h2> <%= @wedding.entertainment_and_flowers %>
+<h2>Flowers and Color Scheme:</h2> <%= @wedding.flowers_and_color_scheme %>
 <br>
 <br>
+<h2>Venue:</h2> <%=@wedding.venue.name%>
 <h3>
 <%= link_to "Delete", wedding_path(@wedding), method: 'delete' %>
 </h3>

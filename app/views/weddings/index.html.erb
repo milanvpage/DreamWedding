@@ -3,8 +3,8 @@
 <% @weddings.each do |wedding| %>
     <ul>
     <li>
-    <%= link_to wedding.title_and_color_scheme, wedding_path(wedding)%> 
-    <%= link_to wedding.entertainment_and_flowers, wedding_path(wedding)%>
+    <%= link_to wedding.title_and_entertainment, wedding_path(wedding)%> 
+    <%= link_to wedding.flowers_and_color_scheme, wedding_path(wedding)%>
     </ul>
     </li>
 <% end %>

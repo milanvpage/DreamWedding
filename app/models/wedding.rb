@@ -12,21 +12,22 @@ class Wedding < ApplicationRecord
 
   
   
-  #def venue_attributes=(hash_of_attributes)
-   # if !hash_of_attributes["name"].blank? && !hash_of_attributes["address"].blank? && !hash_of_attributes["price"].blank? 
-    #    self.venue = Venue.find_or_create_by(hash_of_attributes)
-    #end
+  def venue_attributes=(hash_of_attributes)
+    #byebug
+    if !hash_of_attributes["name"].blank? && !hash_of_attributes["address"].blank? && !hash_of_attributes["price"].blank? 
+        self.venue = Venue.find_or_create_by(hash_of_attributes)
+    end
 
-#end
+end
 
 
 
-  def title_and_color_scheme
-    "#{self.title} - #{self.color_scheme}"
+  def flowers_and_color_scheme
+    "#{self.flowers} - #{self.color_scheme}"
   end
 
-  def entertainment_and_flowers
-    "#{self.entertainment} - #{self.flowers}"
+  def title_and_entertainment
+    "#{self.title} - #{self.entertainment}"
   end
 
   def too_many_wedddings
