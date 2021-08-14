@@ -31,7 +31,7 @@ class WeddingsController < ApplicationController
 
     def update
         @wedding = Wedding.find_by_id(params[:id])
-        @wedding.update[wedding_params]
+        @wedding.update(wedding_params)
         if @wedding.valid?
             redirect_to wedding_path(@wedding)
         else
@@ -49,7 +49,7 @@ class WeddingsController < ApplicationController
     private
 
     def wedding_params
-        params.require(:wedding).permit(:title, :entertainment, :color_scheme, :flowers, :venue_id, venue_attributes:[:name, :address, :price] )
+        params.require(:wedding).permit(:title, :entertainment, :color_scheme, :flowers, :venue_id, venue_attributes:[:name, :address, :price])
     end
 
 end

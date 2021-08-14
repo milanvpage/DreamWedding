@@ -8,4 +8,6 @@
 <h2>Venue:</h2> <%=@wedding.venue.name%>
 <h3>
 <%= link_to "Delete", wedding_path(@wedding), method: 'delete' %>
+<%= link_to "Edit", wedding_path(@wedding), method: 'patch' %>
+
 </h3>

@@ -13,6 +13,28 @@
     <%= f.text_field :entertainment %>
     <br>
     <br>
-    <%= submit_tag "Update Wedding" %>
+    <%= f.label :flowers %>
+    <%= f.text_field :flowers %>
+    <br>
+    <br>
+    <h3>Select an already existing Venue:</h3>
+    <%= f.collection_select :venue_id, Venue.all, :id, :name %>
+    <h3>Make a Venue:</h3>
+    <%= f.fields_for :venue do |v| %>
+        <%= v.label :name %>
+        <%= v.text_field :name %>
+        <br>
+        <br>
+        <%= v.label :address %>
+        <%= v.text_field :address %>
+        <br>
+        <br>
+        <%= v.label :price %>
+        <%= v.number_field :price, step:"0.01" %>
+    <% end %>
+    
+    <br>
+    <br>
+    <%= f.submit "Update Wedding" %>
 <% end %>
 </h2>
