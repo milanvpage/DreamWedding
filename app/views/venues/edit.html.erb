@@ -1,15 +1,6 @@
 <h1>Edit Venue</h1>
-<% if @venue.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+<%= render partial: "layouts/error", locals: { object: @venue } %>
 
-    <ul>
-      <% @venue.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 <h4>
 <%= form_for(@venue) do |f| %>
     <%= render partial: "form", locals: { fp: f } %>

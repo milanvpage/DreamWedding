@@ -1,12 +1,21 @@
 class WeddingsController < ApplicationController
     layout "wedding"
     def new
-        @wedding = Wedding.new
-        @wedding.build_venue
+        if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
+            #@wedding = Wedding.new(venue_id: params[:venue_id])
+            @wedding = @venue.weddings.build
+        else
+            @wedding = Wedding.new
+            @wedding.build_venue
+        end
+        
     end
     
     def create
-        @wedding = Wedding.new(wedding_params) 
+        @wedding = Wedding.new(wedding_params)
+        if params[:venue_id]
+            @venue = Venue.find_by_id(params[:venue_id])
+        end
         if @wedding.save
             
             session[:wedding_id] = @wedding.id 
@@ -23,7 +32,12 @@ class WeddingsController < ApplicationController
     end
 
     def index
-        @weddings = Wedding.all
+        if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
+
+            @weddings = @venue.weddings
+        else
+            @weddings = Wedding.all
+        end
     end
 
     def edit
@@ -50,7 +64,7 @@ class WeddingsController < ApplicationController
     private
 
     def wedding_params
-        params.require(:wedding).permit(:title, :entertainment, :color_scheme, :flowers, :venue_id, venue_attributes:[:name, :address, :price])
+        params.require(:wedding).permit(:title, :entertainment, :color_scheme, :flowers, :user_id, :venue_id, venue_attributes:[:name, :address, :price])
     end
 
 end

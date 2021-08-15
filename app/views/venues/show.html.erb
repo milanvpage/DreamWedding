@@ -6,8 +6,8 @@
 <%= venue_price %>
 <br>
 <br>
-<h2><%= @venue.name %> Wedding List:</h2>
-<h3><%= render partial: "weddings/wedding", collection: @venue.weddings %></h3>
+<h2>Wedding List:</h2>
+<%= render partial: "weddings/wedding", collection: @venue.weddings %>
 <h3>
 <%= link_to "Delete", venue_path(@venue), method: 'delete' %>
 <br>

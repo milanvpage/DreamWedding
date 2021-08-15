@@ -2,7 +2,7 @@ class VenuesController < ApplicationController
     layout "venue"
     def new
         @venue = Venue.new
-       5.times {@venue.weddings.build}
+       3.times {@venue.weddings.build}
     end
 
     def show
@@ -48,7 +48,7 @@ class VenuesController < ApplicationController
 
     def most_expensive
         @venues = Venue.order_by_price
-        render :index, layout: "most_expensive"
+        render :index
     end
 
     def least_expensive

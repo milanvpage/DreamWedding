@@ -5,7 +5,7 @@ class Wedding < ApplicationRecord
   has_many :comments
   has_many :users, through: :comments
 
-  validates :title, presence: true, two_word: true, length: {minimum: 2}
+  validates :title, presence: true, length: {minimum: 2}
   validates :flowers, :entertainment, :color_scheme, presence: true
   validates :color_scheme, presence: true, two_word: true
   validate :too_many_wedddings
