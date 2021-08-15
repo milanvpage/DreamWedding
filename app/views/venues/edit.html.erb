@@ -1,18 +1,38 @@
 <h1>Edit Venue</h1>
-<h2>
-<%= form_for(@venue) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <br>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-    <br>
-    <br>
-    <%= f.label :price %>
-    <%= f.number_field :price, step:"0.01" %>
-    <br>
-    <br>
-    <%= submit_tag "Update Venue" %>
+<% if @venue.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+
+    <ul>
+      <% @venue.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
-</h2>
+<h4>
+<%= form_for(@venue) do |f| %>
+    <%= render partial: "form", locals: { fp: f } %>
+
+    <h3>Add Weddings:</h3>
+    <%= f.fields_for :weddings do |w| %>
+        <%= w.label :title %>
+        <%= w.text_field :title %>
+        <br>
+        <br>
+        <%= w.label :color_scheme %>
+        <%= w.text_field :color_scheme %>
+        <br>
+        <br>
+        <%= w.label :entertainment %>
+        <%= w.text_field :entertainment %>
+        <br>
+        <br>
+        <%= w.label :flowers %>
+        <%= w.text_field :flowers %>
+        <hr>
+        <br>
+        <% end %>
+    <%= f.submit %>
+<% end %>
+</h4>

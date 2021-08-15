@@ -1,29 +1,10 @@
 <h1>Create Venue</h1>
-<% if @venue.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+<%= render partial: "layouts/error", locals: { object: @venue } %>
 
-    <ul>
-      <% @venue.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 <h4>
 <%= form_for(@venue) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <br>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-    <br>
-    <br>
-    <%= f.label :price %>
-    <%= f.number_field :price, step:"0.01" %>
-    <br>
-    <br>
+    <%= render partial: "form", locals: { fp: f } %>
+
     <h3>Add Weddings:</h3>
     <%= f.fields_for :weddings do |w| %>
         <%= w.label :title %>
@@ -43,6 +24,6 @@
         <hr>
         <br>
         <% end %>
-    <%= f.submit "Create Venue" %>
+    <%= f.submit %>
 <% end %>
 </h4>

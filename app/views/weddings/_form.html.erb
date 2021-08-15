@@ -1,0 +1,32 @@
+<%= render partial: "layouts/error", locals: { object: @wedding } %>
+
+<h2>
+<%= form_for(@wedding) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <br>
+    <%= f.label :color_scheme %>
+    <%= f.text_field :color_scheme %>
+    <br>
+    <br>
+    <%= f.label :entertainment %>
+    <%= f.text_field :entertainment %>
+    <br>
+    <br>
+    <%= f.label :flowers %>
+    <%= f.text_field :flowers %>
+    <br>
+    <br>
+    <h3>Select an already existing Venue:</h3>
+    <%= f.collection_select :venue_id, Venue.all, :id, :name %>
+    <h3>Make a Venue:</h3>
+    <%= f.fields_for :venue do |v| %>
+        <%= render partial: "venues/form", locals: { fp: v } %>
+    <% end %>
+    
+    <br>
+    <br>
+    <%= f.submit %>
+<% end %>
+</h2>

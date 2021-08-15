@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     end
 
     def index
-        @weddings = Comment.all
+        @comments = Comment.all
     end
 
     def edit
@@ -48,7 +48,7 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.require(:comment).permit(:content)
+        params.require(:comment).permit(:content, :title, :wedding_id)
     end
 
 

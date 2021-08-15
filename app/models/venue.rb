@@ -1,5 +1,5 @@
 class Venue < ApplicationRecord
-  has_many :weddings
+  has_many :weddings, dependent: :destroy
   accepts_nested_attributes_for :weddings, reject_if: proc { |attributes| attributes['title'].blank? || attributes['entertainment'].blank? || attributes['color_scheme'].blank? || attributes['flowers'].blank? }
   has_many :users, through: :weddings
   

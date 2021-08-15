@@ -26,10 +26,6 @@ end
     "#{self.flowers} - #{self.color_scheme}"
   end
 
-  def title_and_entertainment
-    "#{self.title} - #{self.entertainment}"
-  end
-
   def too_many_wedddings
     if Wedding.all.length >= 20
      errors.add :base, :invalid, message: "You have too many Weddings"

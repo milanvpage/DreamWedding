@@ -1,23 +1,16 @@
-<h1>SHOW PAGE </h1>
+<h1><%= @venue.name %></h1>
 
-
-<%= @venue.name_and_address %>
-</h2>
+<h2><%= @venue.name_and_address %></h2>
 <br>
 <br>
-<h2>Price:</h2><%= number_to_currency(@venue.price) %>
+<%= venue_price %>
 <br>
 <br>
 <h2><%= @venue.name %> Wedding List:</h2>
-<%= @venue.weddings.each do |wedding|%>
-    <ul>
-    <li>
-    <%= link_to wedding.title, wedding_path(wedding)%> 
-    <ul>
-    </li>
-<% end %>
-
-
+<h3><%= render partial: "weddings/wedding", collection: @venue.weddings %></h3>
 <h3>
 <%= link_to "Delete", venue_path(@venue), method: 'delete' %>
+<br>
+<br>
+<%= link_to "Edit", edit_venue_path(@venue)%>
 </h3>

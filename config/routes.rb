@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
   root to: 'sessions#welcome'
 
-  #put custom routes at thetop of the routes because dynamic routes like :id with over power them.
+#put custom routes at the top of the routes because dynamic routes like :id will over power them.
 #localhost:3000/rails/info/routes
 get '/venues/most_expensive', to: 'venues#most_expensive'
 
 get '/venues/least_expensive', to: 'venues#least_expensive'
 
-
-  #put custom routes at the top
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 
@@ -24,9 +22,7 @@ get '/venues/least_expensive', to: 'venues#least_expensive'
 
   resources :comments
   resources :users
-  # get '/weddings', to: 'weddings#index' controller name and then the action it's going to inside our controller
-  # get '/weddings/:id', to: 'weddings#show' as: 'wedding'
-  # get '/weddings/most_expensive', to: 'weddings#most_expensive'
+  
   resources :weddings do
 
   end
@@ -34,3 +30,6 @@ get '/venues/least_expensive', to: 'venues#least_expensive'
 end
 
 
+# get '/weddings', to: 'weddings#index' controller name and then the action it's going to inside our controller
+  # get '/weddings/:id', to: 'weddings#show' as: 'wedding'
+  # get '/weddings/most_expensive', to: 'weddings#most_expensive'
