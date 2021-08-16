@@ -36,7 +36,6 @@ class SessionsController < ApplicationController
             redirect_to  venues_path
         else
         end
-    end
         #email
         #password
         #username/businessname
