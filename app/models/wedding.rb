@@ -1,5 +1,6 @@
 class Wedding < ApplicationRecord
   belongs_to :venue
+  belongs_to :user
   accepts_nested_attributes_for :venue #venue_attributes=
 
   has_many :comments
