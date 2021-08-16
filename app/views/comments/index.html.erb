@@ -1,7 +1,0 @@
-<h1>All Comments</h1>
-
-<% @comments.each do |c| %>
-    <ul>
-        <li><%= link_to c.title, comment_path(c) %> - <%= c.wedding.title %> - <%= c.wedding.venue.title %></li>
-    </ul>
- <% end %>

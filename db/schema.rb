@@ -10,17 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_133009) do
+ActiveRecord::Schema.define(version: 2021_08_16_134525) do
 
-  create_table "comments", force: :cascade do |t|
-    t.string "title"
-    t.string "content"
-    t.integer "user_id"
-    t.integer "wedding_id"
+  create_table "customizations", force: :cascade do |t|
+    t.string "food"
+    t.string "beverage"
+    t.integer "wedding_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_comments_on_user_id"
-    t.index ["wedding_id"], name: "index_comments_on_wedding_id"
+    t.index ["wedding_id"], name: "index_customizations_on_wedding_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,7 +51,6 @@ ActiveRecord::Schema.define(version: 2021_08_16_133009) do
     t.index ["venue_id"], name: "index_weddings_on_venue_id"
   end
 
-  add_foreign_key "comments", "users"
-  add_foreign_key "comments", "weddings"
+  add_foreign_key "customizations", "weddings"
   add_foreign_key "weddings", "venues"
 end

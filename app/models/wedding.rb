@@ -1,10 +1,8 @@
 class Wedding < ApplicationRecord
   belongs_to :venue
   belongs_to :user
+  has_many :customizations
   accepts_nested_attributes_for :venue #venue_attributes=
-
-  has_many :comments
-  has_many :users, through: :comments
 
   validates :title, presence: true, length: {minimum: 2}
   validates :flowers, :entertainment, :color_scheme, presence: true

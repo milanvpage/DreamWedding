@@ -9,8 +9,13 @@ class SessionsController < ApplicationController
 
     def create
         #byebug
+        #example
+        # @person && @person.name
+        # @person.try(:name)
+        #same thing...
         user = User.find_by_email(params[:user][:email])
-        if user && user.authenticate(params[:user][:password])
+        #if user && user.authenticate(params[:user][:password])
+        if user.try(:authenticate, params[:user][:password])
             session[:user_id] = user.id
             redirect_to weddings_path
         else
@@ -24,18 +29,14 @@ class SessionsController < ApplicationController
         #byebug
 
         #User.find_or_create_by(name: params["name"])
-        user = User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
-            u.email = auth['info']['email']
-            u.business_name = auth['info']['name']
-            u.password = SecureRandom.hex(14)
-        end
+        user = User.from_omniauth(auth)
         if user.valid?
             session[:user_id] = user.id
             flash[:message] = "Successful Log In!!"
             redirect_to  venues_path
         else
-
         end
+    end
         #email
         #password
         #username/businessname
