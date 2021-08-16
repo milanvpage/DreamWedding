@@ -1,5 +1,4 @@
 class WeddingsController < ApplicationController
-    layout "wedding"
     def new
         if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
             #@wedding = Wedding.new(venue_id: params[:venue_id])

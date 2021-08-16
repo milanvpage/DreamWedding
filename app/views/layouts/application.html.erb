@@ -18,7 +18,12 @@
   <%= link_to "Add a New Venue", new_venue_path %> |
   <%= link_to "All Weddings", weddings_path %> |
   <%= link_to "All Venues", venues_path %> | 
+  <%= link_to "Log Out", logout_path, method: 'delete' %> |
+  <%= button_to "Sign in with Google", '/auth/google_oauth2'%>
 
+  <% flash.each do |type, msg| %>
+    <%= msg %>
+  <% end %>
     <%= yield %>
   </body>
 </html>

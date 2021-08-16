@@ -1,16 +1,17 @@
 class User < ApplicationRecord
-    validates :email, uniqueness: true
-    validates :business_name, presence: true
-    validates :phone_number, presence: true
-    validates :password, presence: true
-
-
-
     has_many :weddings
-    has_many :venues, through: :weddings
+    #has_many :venues, through: :weddings
 
     has_many :comments
-    has_many :commented_weddings, through: :comments, source: :wedding
+    has_many :commented_weddings, through: :comments
 
-    has_secure_password #authenticate validates the password &/or password confirmation #methods: authenticate, password=, validate
+    validates :email, presence: true
+    validates :business_name, presence: true
+    validates :password_digest, presence: true
+    has_secure_password
+
+
+
+
+
 end
