@@ -1,15 +1,17 @@
 class VenuesController < ApplicationController
+    before_action :redirect_if_not_logged_in?
+    before_action :find_venue, only: [:show, :update, :edit, :destroy]
+    
     def new
         @venue = Venue.new
        3.times {@venue.weddings.build}
     end
 
     def show
-        @venue = Venue.find_by_id(params[:id])
     end
 
     def index
-        @venues = Venue.all
+        @venues = Venue.order_by_price
     end
 
     def create
@@ -26,11 +28,9 @@ class VenuesController < ApplicationController
     end
 
     def edit
-        @venue = Venue.find_by_id(params[:id])
     end
 
     def update
-        @venue = Venue.find_by_id(params[:id])
         @venue.update(venue_params)
         if @venue.valid?
             redirect_to venue_path(@venue)
@@ -40,7 +40,6 @@ class VenuesController < ApplicationController
     end
 
     def destroy
-        @venue = Venue.find_by_id(params[:id])
         @venue.destroy
         redirect_to venues_path
     end
@@ -59,6 +58,10 @@ class VenuesController < ApplicationController
 
     def venue_params
         params.require(:venue).permit(:name, :address, :price, weddings_attributes: [:title, :entertainment, :color_scheme, :flowers])
+    end
+
+    def find_venue
+        @venue = Venue.find_by_id(params[:id])
     end
 
 

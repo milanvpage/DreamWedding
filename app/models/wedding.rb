@@ -10,7 +10,7 @@ class Wedding < ApplicationRecord
   validates :color_scheme, presence: true, two_word: true
   validate :too_many_wedddings
 
-  
+  scope :color_scheme_selector, -> (color_scheme) {where('color_scheme == ?', color_scheme)}
   
   def venue_attributes=(hash_of_attributes)
     #byebug

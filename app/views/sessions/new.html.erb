@@ -1,7 +1,7 @@
 <h1>Log In</h1>
 
 <h3>
-<%= form_for(:session, url: login_path) do |f| %>
+<%= form_for(:user, url: login_path) do |f| %>
     <%= f.label :email %>
     <%= f.text_field :email %>
     <br>
@@ -12,5 +12,4 @@
     <br>
     <%= f.submit "Log In" %>
     <% end %>
-
 </h3>

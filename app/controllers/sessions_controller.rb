@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     end
 
     def create
+        #byebug
         user = User.find_by_email(params[:user][:email])
         if user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
@@ -30,7 +31,7 @@ class SessionsController < ApplicationController
         if user.valid?
             session[:user_id] = user.id
             flash[:message] = "Successful Log In!!"
-            redirect_to  weddings_path
+            redirect_to  venues_path
         else
 
         end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
             #log them in
             session[:user_id] = @user.id 
             #redirect to the show show page
-            redirect_to @user
+            redirect_to user_path(@user)
 
         else
             render :new

@@ -1,4 +1,7 @@
 class WeddingsController < ApplicationController
+    before_action :redirect_if_not_logged_in?
+    before_action :find_wedding, only: [:show, :update, :edit, :destroy]
+    
     def new
         if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
             #@wedding = Wedding.new(venue_id: params[:venue_id])
@@ -27,24 +30,24 @@ class WeddingsController < ApplicationController
     end
 
     def show
-        @wedding = Wedding.find_by_id(params[:id])
     end
 
     def index
         if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
-
             @weddings = @venue.weddings
         else
             @weddings = Wedding.all
         end
+        if params[:wedding] && !params[:wedding][:color_scheme].blank?
+            @weddings = Wedding.color_scheme_selector(params[:wedding][:color_scheme])
+        end
+
     end
 
     def edit
-        @wedding = Wedding.find_by_id(params[:id])
     end
 
     def update
-        @wedding = Wedding.find_by_id(params[:id])
         @wedding.update(wedding_params)
         if @wedding.valid?
             redirect_to wedding_path(@wedding)
@@ -54,7 +57,6 @@ class WeddingsController < ApplicationController
     end
 
     def destroy
-        @wedding = Wedding.find_by_id(params[:id])
         @wedding.destroy
         redirect_to weddings_path
     end
@@ -65,5 +67,10 @@ class WeddingsController < ApplicationController
     def wedding_params
         params.require(:wedding).permit(:title, :entertainment, :color_scheme, :flowers, :user_id, :venue_id, venue_attributes:[:name, :address, :price])
     end
+
+    def find_wedding
+        @wedding = Wedding.find_by_id(params[:id])
+    end
+
 
 end

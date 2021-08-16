@@ -8,15 +8,17 @@ class Venue < ApplicationRecord
   validates :address, presence: true, uniqueness: {scope: [:name, :price]}
   validates :price, numericality: {greater_than: 0, less_than: 1000000001}, presence: true
   
+  scope :order_by_price, -> {order(:price)}
 
+  
   def name_and_address
     "#{self.name} - #{self.address}"
   end
 
-  def self.order_by_price
-    self.order(price: :desc).limit(1)
+  #def self.order_by_price
+   # self.order(price: :desc).limit(1)
 
-  end
+  #end
 
   def self.least_expensive
     self.where("price < 11000").limit(1)

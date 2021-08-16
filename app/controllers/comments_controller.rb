@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+    before_action :redirect_if_not_logged_in?
+    before_action :find_comment, only: [:show, :update, :edit, :destroy]
+    
     def new
         @comment = Comment.new
     end
@@ -17,7 +20,6 @@ class CommentsController < ApplicationController
     end
 
     def show
-        @comment = Comment.find_by_id(params[:id])
     end
 
     def index
@@ -25,11 +27,9 @@ class CommentsController < ApplicationController
     end
 
     def edit
-        @comment = Comment.find_by_id(params[:id])
     end
 
     def update
-        @comment = Comment.find_by_id(params[:id])
         @comment.update[comment_params]
         if @comment.valid?
             redirect_to comment_path(@comment)
@@ -39,7 +39,6 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        @comment = Comment.find_by_id(params[:id])
         @comment.destroy
         redirect_to comments_path
     end
@@ -49,6 +48,10 @@ class CommentsController < ApplicationController
 
     def comment_params
         params.require(:comment).permit(:content, :title, :wedding_id)
+    end
+
+    def find_comment
+        @comment = Comment.find_by_id(params[:id])
     end
 
 

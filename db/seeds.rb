@@ -17,6 +17,6 @@ u1 = User.find_or_create_by(business_name: "MVP", email: "mvpage@gmail.com", pas
 
 u2 = User.find_or_create_by(business_name: "MVP", email: "milanvpage@gmail.com", password_digest: "Bubbyone1!")
 
-w1 = Wedding.find_or_create_by(title: "Summer Wedding", entertainment: "Jack Johnson", color_scheme: "lavender", flowers: "White Roses", venue: v1)
-
 c1 = Comment.find_or_create_by(title: "Summer Wedding Review", content: "this was crap", wedding: w1, user: u1)
+
+w1 = Wedding.find_or_create_by(title: "Summer Wedding", entertainment: "Jack Johnson", color_scheme: "lavender", flowers: "White Roses", venue: v1)

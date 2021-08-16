@@ -3,12 +3,16 @@
 <%= form_for([@venue, @wedding]) do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
+    <br>
     <%= f.label :color_scheme %>
     <%= f.text_field :color_scheme %>
+    <br>
     <%= f.label :entertainment %>
     <%= f.text_field :entertainment %>
+    <br>
     <%= f.label :flowers %>
     <%= f.text_field :flowers %>
+    <br>
     <%= venue_form_helper(f) %>
     <%= f.submit %>
 <% end %>

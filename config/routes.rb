@@ -5,18 +5,16 @@ Rails.application.routes.draw do
   get '/venues/most_expensive', to: 'venues#most_expensive'
   get '/venues/least_expensive', to: 'venues#least_expensive'
 
-  get '/signup' => 'users#new'
-  post '/signup' => 'users#create'
-  get '/login' => 'sessions#new'
-  post 'login' => 'sessions#create'
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+  get '/login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
 
   resources :users
-  resources :comments, only: [:new, :create, :index]
-  resources :weddings do
-    resources :comments, shallow: true
-  end
+  resources :comments
+  resources :weddings, only: [:new, :create, :index]
   resources :venues do
     resources :weddings, shallow: true
   end
