@@ -11,16 +11,18 @@
   </head>
 
   <body>
-  <%= render 'layouts/navigation' %>
-  <br>
-  <br>
+  <%= link_to "Welcome", root_path %> | 
+  <%= link_to "Add a New Wedding", new_wedding_path %> |
+  <%= link_to "All Weddings", weddings_path %> |
+  <%= link_to "All Venues", venues_path %> | 
+  <%= link_to "Profile", user_path(current_user) %> |
+    <%= navigation_helper %>
+    <br>
+    <br>
+
   <% flash.each do |type, msg| %>
     <%= msg %>
   <% end %>
-  <% if flash[:message] %>
-  <%= flash[:message] %>
-  <% end %>
-  <%= @error %>
     <%= yield %>
   </body>
 </html>

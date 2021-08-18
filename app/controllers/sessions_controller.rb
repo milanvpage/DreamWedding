@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
         if user.valid?
             session[:user_id] = user.id
             flash[:message] = "Successful Log In!!"
-            redirect_to  venues_path
+            redirect_to  weddings_path
         else
         end
         #email

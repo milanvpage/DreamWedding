@@ -1,9 +1,5 @@
-<%= index_header_venue %>
-<h1>Filter By Color:</h1>
-<%= form_tag(weddings_path, method: "get") do %>
-    <%= collection_select :wedding, :color_scheme, Wedding.all, :color_scheme, :color_scheme, {:include_blank => "Choose Color Scheme"} %>
-    <%= submit_tag "Filter" %>
-<% end %>
+<%= index_header_venue_helper %>
+
 <%= render partial: "wedding", collection: @weddings %>
 
     

@@ -1,3 +1,7 @@
-<h1><%= @user.business_name %>'s </h1>
-
-
+<h1><%= @user.business_name %></h1>
+<h2>Weddings</h2>
+<h3>
+<% @user.weddings.each do |w| %>
+    <%= link_to w.title, wedding_path(w) %>
+    <% end %>
+</h3>

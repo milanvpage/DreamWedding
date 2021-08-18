@@ -1,5 +1,5 @@
 module WeddingsHelper
-    def index_header_venue
+    def index_header_venue_helper
          if @venue 
             content_tag(:h1, "#{@venue.name} Weddings:")
          else 
@@ -7,7 +7,7 @@ module WeddingsHelper
          end 
     end
 
-    def form_header_venue
+    def form_header_venue_helper
         if @venue 
            content_tag(:h1, "Create #{@venue.name} Wedding:")
         else 
@@ -23,4 +23,13 @@ module WeddingsHelper
 
         end 
    end
+
+   def wedding_creator
+    unless @wedding.user_id  == current_user
+        redirect_to weddings_path
+    end
+end
+
+   
+
 end

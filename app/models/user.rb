@@ -2,7 +2,6 @@ class User < ApplicationRecord
     has_many :weddings
     has_many :venues, through: :weddings
 
-
     validates :email, presence: true, uniqueness: true
     validates :business_name, presence: true
     has_secure_password #authenticate, password=, validate methods all available

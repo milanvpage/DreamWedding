@@ -2,5 +2,5 @@
         <%= f.collection_select :venue_id, Venue.all, :id, :name %>
         <h3>Make a Venue:</h3>
         <%= f.fields_for :venue do |v| %>
-       <%= render partial: "venues/form", locals: { fp: v } %>
+       <%= render partial: "venues/form", locals: { f: v } %>
         <% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :states
   resources :customizations
   root to: 'sessions#welcome'
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
@@ -12,12 +13,10 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-
+  resources :weddings
   resources :users
-  resources :comments
-  resources :weddings, only: [:new, :create, :index]
-  resources :venues do
-    resources :weddings, shallow: true
+ resources :venues do
+    resources :weddings, only: [:new, :create, :index]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

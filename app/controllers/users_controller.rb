@@ -3,6 +3,7 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
+    
     def create
         @user = User.new(user_params) 
         if @user.save
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        redirect_if_not_logged_in?
         @user = User.find_by_id(params[:id])
     end
 

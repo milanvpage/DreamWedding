@@ -10,13 +10,13 @@ class Venue < ApplicationRecord
   
   scope :order_by_price, -> {order(:price)}
 
-  
+
   def name_and_address
     "#{self.name} - #{self.address}"
   end
 
   #def self.order_by_price
-   # self.order(price: :desc).limit(1)
+    #self.order(price: :desc).limit(1)
 
   #end
 

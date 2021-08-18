@@ -5,10 +5,12 @@
   <ul>
   <li>
   <h2>
-  <%= link_to venue.name_and_address, venue_weddings_path(venue) %>
+  <%= link_to venue.name_and_address, venue_path(venue) %>
   <br>
   <h3>Price:</h3> <%= number_to_currency(venue.price) %>
   </ul>
   </li>
   </h2>
   <% end %>
+
+  

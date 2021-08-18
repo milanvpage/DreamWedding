@@ -1,12 +1,16 @@
 class WeddingsController < ApplicationController
+layout "wedding"
+
     before_action :redirect_if_not_logged_in?
     before_action :find_wedding, only: [:show, :update, :edit, :destroy]
+    before_action :wedding_creator, only: [:edit, :update, :destroy]
     
     def new
         if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
             #@wedding = Wedding.new(venue_id: params[:venue_id])
             @wedding = @venue.weddings.build
         else
+            @error = flash[:message] = "That Venue doesn't exist" if params[:venue_id ]
             @wedding = Wedding.new
             @wedding.build_venue
         end
@@ -14,7 +18,7 @@ class WeddingsController < ApplicationController
     end
     
     def create
-        @wedding = Wedding.new(wedding_params)
+        @wedding = current_user.weddings.build(wedding_params)
         if params[:venue_id]
             @venue = Venue.find_by_id(params[:venue_id])
         end
@@ -36,15 +40,17 @@ class WeddingsController < ApplicationController
         if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
             @weddings = @venue.weddings
         else
+            @error = flash[:message] = "That Venue doesn't exist" if params[:venue_id ]
             @weddings = Wedding.all
         end
-        if params[:wedding] && !params[:wedding][:color_scheme].blank?
-            @weddings = Wedding.color_scheme_selector(params[:wedding][:color_scheme])
+        if params[:wedding] && !params[:wedding]
+            @weddings = Wedding.all
         end
 
     end
 
     def edit
+        
     end
 
     def update
@@ -71,6 +77,8 @@ class WeddingsController < ApplicationController
     def find_wedding
         @wedding = Wedding.find_by_id(params[:id])
     end
+
+    
 
 
 end
