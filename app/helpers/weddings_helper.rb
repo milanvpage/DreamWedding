@@ -24,12 +24,16 @@ module WeddingsHelper
         end 
    end
 
-   def wedding_creator
-    unless @wedding.user_id  == current_user
-        redirect_to weddings_path
+   def wedding_edit
+        if @wedding.user  == current_user
+            link_to "Edit", edit_wedding_path(@wedding)
+        end
+    end
+
+    def wedding_delete
+        if @wedding.user == current_user
+            link_to "Delete", wedding_path(@wedding), method: 'delete' 
+        end
     end
 end
 
-   
-
-end

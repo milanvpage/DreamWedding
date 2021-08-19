@@ -7,10 +7,8 @@
 <br>
 <h2>Venue:</h2> <%= @wedding.venue.name%>
 <h3>
-<% if @wedding.user_id = current_user %>
-<%= link_to "Delete", wedding_path(@wedding), method: 'delete' %>
+<%= wedding_edit %>
 <br>
-<br>
-<%= link_to "Edit", edit_wedding_path(@wedding)%>
-<% end %>
+<%= wedding_delete %>
+
 </h3>

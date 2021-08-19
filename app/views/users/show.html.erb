@@ -2,6 +2,10 @@
 <h2>Weddings</h2>
 <h3>
 <% @user.weddings.each do |w| %>
+    <ul>
+    <li>
     <%= link_to w.title, wedding_path(w) %>
+    </li>
+    </ul>
     <% end %>
 </h3>

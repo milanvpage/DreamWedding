@@ -1,9 +1,10 @@
 class Venue < ApplicationRecord
-  has_many :weddings, dependent: :destroy
+  has_many :weddings
   has_many :users, through: :weddings
+
   accepts_nested_attributes_for :weddings, reject_if: proc { |attributes| attributes['title'].blank? || attributes['entertainment'].blank? || attributes['color_scheme'].blank? || attributes['flowers'].blank? }
 
-
+  
   validates :name, presence: true, length: {minimum: 2, message: "has to be longer than 2!"}
   validates :address, presence: true, uniqueness: {scope: [:name, :price]}
   validates :price, numericality: {greater_than: 0, less_than: 1000000001}, presence: true

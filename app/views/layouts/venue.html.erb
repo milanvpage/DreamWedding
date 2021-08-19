@@ -11,12 +11,12 @@
   </head>
 
   <body>
-  <%= link_to "Welcome", root_path %> | 
   <%= link_to "Add a New Venue", new_venue_path %> |
   <%= link_to "All Weddings", weddings_path %> |
   <%= link_to "All Venues", venues_path %> | 
   <%= link_to "Profile", user_path(current_user) %> |
-  <br>
+
+   <br>
   <br>
     <%= navigation_helper %>  
     <% flash.each do |type, msg| %>

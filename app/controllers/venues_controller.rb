@@ -2,9 +2,6 @@ class VenuesController < ApplicationController
     layout "venue"
 
     before_action :redirect_if_not_logged_in?
-    before_action :redirect_if_not_authorized, only: [:update, :edit, :destroy]
-    before_action :wedding_creator, only: [:edit, :update, :destroy]
-
     before_action :find_venue, only: [:show, :update, :edit, :destroy]
     
     def new
@@ -89,7 +86,6 @@ class VenuesController < ApplicationController
     def find_venue
         @venue = Venue.find_by_id(params[:id])
     end
-
 
 
 

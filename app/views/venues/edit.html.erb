@@ -5,25 +5,7 @@
 <%= form_for(@venue) do |f| %>
     <%= render partial: "form", locals: { f: f } %>
 
-    <h3>Add Weddings:</h3>
-    <%= f.fields_for :weddings do |w| %>
-        <%= w.label :title %>
-        <%= w.text_field :title %>
-        <br>
-        <br>
-        <%= w.label :color_scheme %>
-        <%= w.text_field :color_scheme %>
-        <br>
-        <br>
-        <%= w.label :entertainment %>
-        <%= w.text_field :entertainment %>
-        <br>
-        <br>
-        <%= w.label :flowers %>
-        <%= w.text_field :flowers %>
-        <hr>
-        <br>
-        <% end %>
+    <br>
     <%= f.submit %>
 <% end %>
 </h4>

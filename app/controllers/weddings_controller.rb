@@ -3,8 +3,7 @@ layout "wedding"
 
     before_action :redirect_if_not_logged_in?
     before_action :find_wedding, only: [:show, :update, :edit, :destroy]
-    before_action :wedding_creator, only: [:edit, :update, :destroy]
-    
+    #before_action :wedding_authorization, only: [:edit, :update, :destroy]
     def new
         if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
             #@wedding = Wedding.new(venue_id: params[:venue_id])
@@ -50,7 +49,6 @@ layout "wedding"
     end
 
     def edit
-        
     end
 
     def update
@@ -64,6 +62,7 @@ layout "wedding"
 
     def destroy
         @wedding.destroy
+
         redirect_to weddings_path
     end
 
@@ -77,8 +76,8 @@ layout "wedding"
     def find_wedding
         @wedding = Wedding.find_by_id(params[:id])
     end
-
     
 
+    
 
 end
