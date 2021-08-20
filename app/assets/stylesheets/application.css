@@ -18,3 +18,37 @@
     background-color: red;
     display: table;
   }
+  
+
+body {
+    background-color: rgb(143, 209, 187);
+    line-height: 50px;
+    font-family: Sans-Serif;
+
+}
+
+nav ul li{
+    list-style: none;
+    display: inline-block;
+
+}
+
+a {
+    text-decoration: none;
+    color: rgb(236, 217, 154);
+}
+
+a:hover {
+    color: rgb(20, 88, 97);
+
+}
+h1 {
+    color: rgb(20, 88, 97);
+  }
+
+  h3, h2 {
+    color: rgb(95, 160, 35);
+  }
+  
+
+
