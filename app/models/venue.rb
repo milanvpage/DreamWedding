@@ -16,10 +16,10 @@ class Venue < ApplicationRecord
     "#{self.name} - #{self.address}"
   end
 
-  #def self.order_by_price
-    #self.order(price: :desc).limit(1)
+  def self.order_by_price
+    self.order(price: :desc).limit(1)
 
-  #end
+  end
 
   def self.least_expensive
     self.where("price < 11000").limit(1)
