@@ -3,7 +3,6 @@ layout "wedding"
 
     before_action :redirect_if_not_logged_in?
     before_action :find_wedding, only: [:show, :update, :edit, :destroy]
-    #before_action :wedding_authorization, only: [:edit, :update, :destroy]
     def new
         if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
             #@wedding = Wedding.new(venue_id: params[:venue_id])
