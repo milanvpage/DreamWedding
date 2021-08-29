@@ -1,8 +1,11 @@
 class WeddingsController < ApplicationController
-layout "wedding"
 
     before_action :redirect_if_not_logged_in?
     before_action :find_wedding, only: [:show, :update, :edit, :destroy]
+    before_action :wedding_user, except: [:index, :show, :create]
+
+    layout "wedding"
+
     def new
         if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
             #@wedding = Wedding.new(venue_id: params[:venue_id])
@@ -20,18 +23,15 @@ layout "wedding"
         if params[:venue_id]
             @venue = Venue.find_by_id(params[:venue_id])
         end
-        if @wedding.save
-            
-            session[:wedding_id] = @wedding.id 
-            
+        if @wedding.save            
             redirect_to @wedding
-
         else
             render :new
         end
     end
 
     def show
+        #@wedding = Wedding.find_by_id(params[:id])
     end
 
     def index
@@ -41,9 +41,6 @@ layout "wedding"
             @error = flash[:message] = "That Venue doesn't exist" if params[:venue_id ]
             @weddings = Wedding.all
         end
-        if params[:wedding] && !params[:wedding]
-            @weddings = Wedding.all
-        end
 
     end
 
@@ -51,6 +48,7 @@ layout "wedding"
     end
 
     def update
+
         @wedding.update(wedding_params)
         if @wedding.valid?
             redirect_to wedding_path(@wedding)
@@ -73,8 +71,11 @@ layout "wedding"
     end
 
     def find_wedding
+        #@wedding = current_user.weddings.find(params[:id])
         @wedding = Wedding.find_by_id(params[:id])
+
     end
+
     
 
     

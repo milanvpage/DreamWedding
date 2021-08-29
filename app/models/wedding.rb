@@ -4,7 +4,7 @@ class Wedding < ApplicationRecord
   accepts_nested_attributes_for :venue #venue_attributes=
 
   validates :title, presence: true, length: {minimum: 2}
-  validates :flowers, :entertainment, :color_scheme, presence: true
+  validates :flowers, :entertainment, presence: true
   validates :color_scheme, presence: true, two_word: true
 
   

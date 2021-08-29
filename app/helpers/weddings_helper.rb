@@ -35,5 +35,12 @@ module WeddingsHelper
             link_to "Delete", wedding_path(@wedding), method: 'delete' 
         end
     end
+
+    def wedding_user
+        unless @wedding.user_id == current_user.id
+            redirect_to weddings_path
+        
+        end
+    end
 end
 

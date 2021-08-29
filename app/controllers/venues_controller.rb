@@ -3,8 +3,9 @@ class VenuesController < ApplicationController
 
     before_action :redirect_if_not_logged_in?
     before_action :find_venue, only: [:show, :update, :edit, :destroy]
-    
+
     def new
+        #byebug
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
             @venues = @user.venues.build
         else
@@ -17,33 +18,23 @@ class VenuesController < ApplicationController
     end
 
     def index
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @venues = @user.venues
-        else
-            @error = flash[:message] = "That Venue doesn't exist" if params[:user_id ]
             @venues = Venue.order_by_price
-        end
-        if params[:venue] && !params[:venue]
-            @venues = Venue.order_by_price        
-        end
+               
 
     end
 
     def create
         @venue = Venue.new(venue_params)
-        @venue.weddings.each do |w|
-            w.user= current_user
-           end
-        if params[:wedding_id]
-            @wedding = Wedding.find_by_id(params[:wedding])
+        #@venue.weddings.each do |w|
+         #   w.user= current_user
+         #  end
+        #if params[:wedding_id]
+         #   @wedding = Wedding.find_by_id(params[:wedding])
             
-        end
+        #end
         if @venue.save
             
-            session[:venue_id] = @venue.id 
-            
             redirect_to venues_path
-
         else
             render :new
         end
@@ -54,8 +45,8 @@ class VenuesController < ApplicationController
     end
 
     def update
-        @venue.update(venue_params)
         if @venue.valid?
+            @venue.update(venue_params)
             redirect_to venue_path(@venue)
         else
             render :edit
