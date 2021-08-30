@@ -6,9 +6,7 @@ class VenuesController < ApplicationController
 
     def new
         #byebug
-        #if params[:user_id] && @user = User.find_by_id(params[:user_id])
-         #   @venues = @user.venues.build
-        #else
+        
         @venue = Venue.new
        #3.times {@venue.weddings.build}
        @venue.build_state
@@ -16,6 +14,7 @@ class VenuesController < ApplicationController
     end
 
     def show
+        @venue = Venue.find_by_id(params[:id])
     end
 
     def index
@@ -63,7 +62,7 @@ class VenuesController < ApplicationController
     end
 
     def least_expensive
-        @venues = Venue.least_expensive.order_by_price
+        @venues = Venue.least_expensive
         render :index
     end
 

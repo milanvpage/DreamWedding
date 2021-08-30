@@ -32,12 +32,11 @@ class WeddingsController < ApplicationController
     end
 
     def show
-        #@wedding = Wedding.find_by_id(params[:id])
     end
 
     def index
         if params[:venue_id] && @venue = Venue.find_by_id(params[:venue_id])
-            @weddings = @venue.weddings
+           @weddings = @venue.weddings
         else
             @error = flash[:message] = "That Venue doesn't exist" if params[:venue_id ]
             @weddings = Wedding.all
