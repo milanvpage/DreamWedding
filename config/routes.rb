@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :states
   root to: 'sessions#welcome'
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 

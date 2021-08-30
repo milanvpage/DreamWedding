@@ -2,7 +2,7 @@ class WeddingsController < ApplicationController
 
     before_action :redirect_if_not_logged_in?
     before_action :find_wedding, only: [:show, :update, :edit, :destroy]
-    before_action :wedding_user, except: [:index, :show, :create]
+    before_action :wedding_user, except: [:index, :show, :create, :new]
 
     layout "wedding"
 

@@ -6,12 +6,12 @@ class VenuesController < ApplicationController
 
     def new
         #byebug
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @venues = @user.venues.build
-        else
+        #if params[:user_id] && @user = User.find_by_id(params[:user_id])
+         #   @venues = @user.venues.build
+        #else
         @venue = Venue.new
        3.times {@venue.weddings.build}
-        end
+        #end
     end
 
     def show
@@ -19,15 +19,13 @@ class VenuesController < ApplicationController
 
     def index
             @venues = Venue.order_by_price
-               
-
     end
 
     def create
         @venue = Venue.new(venue_params)
-        #@venue.weddings.each do |w|
-         #   w.user= current_user
-         #  end
+        @venue.weddings.each do |w|
+            w.user= current_user
+           end
         #if params[:wedding_id]
          #   @wedding = Wedding.find_by_id(params[:wedding])
             
