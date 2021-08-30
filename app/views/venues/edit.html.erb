@@ -4,7 +4,18 @@
 <h4>
 <%= form_for(@venue) do |f| %>
     <%= render partial: "form", locals: { f: f } %>
-
+    <h3>Which State is the Venue From:</h3>
+    <%= f.collection_select :state_id, State.all, :id, :name %>
+    <br>
+    <h3> Add the state </h3>
+    <%= f.fields_for :state do |s| %>
+        <%= s.label :name %>
+        <%= s.text_field :name %>
+        <br>
+        <br>
+        <br>
+        <% end %>
+        <br>
     <br>
     <%= f.submit %>
 <% end %>

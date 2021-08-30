@@ -15,14 +15,14 @@ module WeddingsHelper
         end 
    end
 
-   def venue_form_helper(f)
-        if @venue 
-             f.hidden_field :venue_id, value: @venue.id 
-        else 
-             render partial: "build_venue", locals: { f: f } 
+   #def venue_form_helper(f)
+     #   if @venue 
+      #       f.hidden_field :venue_id, value: @venue.id 
+       # else 
+        #     render partial: "build_venue", locals: { f:f }
 
-        end 
-   end
+       # end 
+   #end
 
    def wedding_edit
         if @wedding.user  == current_user

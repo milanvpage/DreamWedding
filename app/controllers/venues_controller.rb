@@ -10,7 +10,8 @@ class VenuesController < ApplicationController
          #   @venues = @user.venues.build
         #else
         @venue = Venue.new
-       3.times {@venue.weddings.build}
+       #3.times {@venue.weddings.build}
+       @venue.build_state
         #end
     end
 
@@ -23,9 +24,9 @@ class VenuesController < ApplicationController
 
     def create
         @venue = Venue.new(venue_params)
-        @venue.weddings.each do |w|
-            w.user= current_user
-           end
+        #@venue.weddings.each do |w|
+         #   w.user= current_user
+          # end
         #if params[:wedding_id]
          #   @wedding = Wedding.find_by_id(params[:wedding])
             
@@ -69,13 +70,12 @@ class VenuesController < ApplicationController
     private
 
     def venue_params
-        params.require(:venue).permit(:name, :address, :price, weddings_attributes: [:title, :entertainment, :color_scheme, :flowers])
+        params.require(:venue).permit(:name, :address, :price, :state_id, state_attributes: [:name])
     end
 
     def find_venue
         @venue = Venue.find_by_id(params[:id])
     end
-
 
 
 end

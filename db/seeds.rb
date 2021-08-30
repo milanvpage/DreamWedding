@@ -6,13 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+o = State.find_or_create_by(name: "Oregon")
+c = State.find_or_create_by(name: "California")
 
-v1 = Venue.find_or_create_by(name:"Summer Heights", address: "5678 Ocean drive Sacremento, California", price: 16000)
 
-v2 = Venue.find_or_create_by(name:"Forest Valley Venue", address: "5678 OakTree Lane Portland, Oregon", price: 10000)
+v1 = Venue.find_or_create_by(name:"Summer Heights", address: "5678 Ocean drive Sacremento", price: 16000, state: c)
 
-v3 = Venue.find_or_create_by(name:"Hill Top Resort", address: "5678 Rose Street Portland, Oregon", price: 18000)
+v2 = Venue.find_or_create_by(name:"Forest Valley Venue", address: "5678 OakTree Lane Portland", price: 10000, state: o)
 
+v3 = Venue.find_or_create_by(name:"Hill Top Resort", address: "5678 Rose Street Portland", price: 18000)
 u1 = User.find_or_create_by(business_name: "MVP", email: "mvpage@gmail.com", password_digest: "1234")
 
 u2 = User.find_or_create_by(business_name: "MVP", email: "milanvpage@gmail.com", password_digest: "Bubbyone1!")

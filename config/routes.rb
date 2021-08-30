@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :states
   root to: 'sessions#welcome'
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 
@@ -15,8 +14,9 @@ Rails.application.routes.draw do
   resources :weddings
   resources :users
  resources :venues do
-    resources :weddings, only: [:new, :create, :index]
+    resources :weddings, shallow: true
   end
+  resources :states
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 #put custom routes at the top of the routes because dynamic routes like :id will over power them.

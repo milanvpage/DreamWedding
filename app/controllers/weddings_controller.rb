@@ -13,7 +13,8 @@ class WeddingsController < ApplicationController
         else
             @error = flash[:message] = "That Venue doesn't exist" if params[:venue_id ]
             @wedding = Wedding.new
-            @wedding.build_venue
+            w = @wedding.build_venue
+            w.build_state
         end
         
     end
@@ -67,7 +68,7 @@ class WeddingsController < ApplicationController
     private
 
     def wedding_params
-        params.require(:wedding).permit(:title, :entertainment, :color_scheme, :flowers, :user_id, :venue_id, venue_attributes:[:name, :address, :price])
+        params.require(:wedding).permit(:title, :entertainment, :color_scheme, :flowers, :user_id, :venue_id, venue_attributes:[:name, :address, :price, :state_id, state_attributes: [:name]])
     end
 
     def find_wedding

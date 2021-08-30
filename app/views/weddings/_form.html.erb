@@ -11,7 +11,28 @@
     <br>
     <%= f.label :flowers %>
     <%= f.text_field :flowers %>
+    <% if @venue %>
+    <%= f.hidden_field :venue_id, value: @venue.id %>
+    <% else %>
     <br>
-    <%= venue_form_helper(f) %>
+    <h3>Select An Existing Venue:</h3>
+    <%= f.collection_select :venue_id, Venue.all, :id, :name %>
+    <h3>Create A Venue</h3>
+    <%= f.fields_for :venue do |v| %>
+        <%= render partial: "venues/form", locals: {f:v} %>
+    <h3>Which State is the Venue From:</h3>
+    <%= v.collection_select :state_id, State.all, :id, :name %>
+    <br>
+    <h3> Add the state if it doesn't already exist </h3>
+    <%= f.fields_for :state do |s| %>
+        <%= s.label :name %>
+        <%= s.text_field :name %>
+        <br>
+        <br>
+        <br>
+        <% end %>
+        <br>
+        <% end %>
+        <% end %>
     <%= f.submit %>
     <% end %>

@@ -1,27 +1,17 @@
 <h1>Create Venue</h1>
 <%= render partial: "layouts/error", locals: { object: @venue } %>
-
 <h4>
 <%= form_for(@venue) do |f| %>
-    <%= render partial: "form", locals: { f: f } %>
-
-    <h3>Add Weddings:</h3>
-    <%= f.fields_for :weddings do |w| %>
-        <%= w.label :title %>
-        <%= w.text_field :title %>
+    <%= render partial: "form", locals: { f:f} %>
+    <h3>Which State is the Venue From:</h3>
+    <%= f.collection_select :state_id, State.all, :id, :name %>
+    <br>
+    <h3> Add the state if it doesn't already exist </h3>
+    <%= f.fields_for :state do |s| %>
+        <%= s.label :name %>
+        <%= s.text_field :name %>
         <br>
         <br>
-        <%= w.label :color_scheme %>
-        <%= w.text_field :color_scheme %>
-        <br>
-        <br>
-        <%= w.label :entertainment %>
-        <%= w.text_field :entertainment %>
-        <br>
-        <br>
-        <%= w.label :flowers %>
-        <%= w.text_field :flowers %>
-        <hr>
         <br>
         <% end %>
         <br>

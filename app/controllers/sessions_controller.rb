@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
     def omniauth
         #byebug
 
-        #User.find_or_create_by(name: params["name"])
+        #User.find_or_create_by(name: params["uid"])
         user = User.from_omniauth(auth)
         if user.valid?
             session[:user_id] = user.id
